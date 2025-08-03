@@ -1,0 +1,18 @@
+class Solution {
+    public int findMaxConsecutiveOnes(int[] nums) {
+        int currentStreak = 0;    // Tracks current streak of 1s
+        int maxStreak = 0;        // Tracks the maximum streak of 1s found
+
+        for (int num : nums) {
+            if (num == 1) {
+                currentStreak++;  // Continue the streak
+            } else {
+                maxStreak = Math.max(maxStreak, currentStreak);  // Update max if needed
+                currentStreak = 0;  // Reset streak on 0
+            }
+        }
+
+        // Final check in case array ends with 1s
+        return Math.max(maxStreak, currentStreak);
+    }
+}
